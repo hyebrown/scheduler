@@ -45,3 +45,16 @@ Games are a class.
 - team2.name
 - team2.isbooked
 
+the scheduling process:
+some games and byes get prescheduled:
+- by request
+- because it's nice to have weds pref teams play thurs pref teams on Saturdays to minimize not getting a pref.
+
+Scheduler.py randomizes the ordering of the list of teams and the ordering of the weeks, and then iterates over the list of teams one at a time, booking a team's entire season, taking multiple passes if necessary.  
+- On the first pass it respects team preferences. If the team is fully booked after the first pass. YAY. 
+- If not, it ignores the preferences and tries to book all the remaining weeks.  
+- If that fails, the schedule fails.
+
+Finder1.sh invokes scheduler.py in a never ending while loop, so that theoretically, eventually it will try all possible combinations of team orderings and week orderings to find a combination that allows a successfull scheduling of the season.
+
+
